@@ -26,14 +26,11 @@ class LagouspdSpider(scrapy.Spider):
 
     def start_parse_job(self, response):
 
-        headers = {
-            "User-Agent": 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
-            'Connection': 'keep - alive'
-        }
+        for url_job in response.xpath('//div[contains(@class, "menu_sub dn")]//dd/a'):
 
-        for url_job in response.css('.sidebar .mainNavs .menu_box .menu_sub dd a'):
             classify_href = url_job.xpath('@href').extract_first()
             classify_name = url_job.xpath('text()').extract_first()
+            # print(classify_name)
             url = classify_href + '1/?filterOption=3'
 
             yield SplashRequest(url,
@@ -42,8 +39,7 @@ class LagouspdSpider(scrapy.Spider):
                                 callback=self.parse_total_page,
                                 dont_filter=True,
                                 args={'lua_source': lua_script},
-                                cache_args=['lua_source'],
-                                headers=headers)
+                                cache_args=['lua_source'])
 
     def parse_total_page(self, response):
         try:

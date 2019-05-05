@@ -39,12 +39,11 @@ COOKIES_ENABLED = True
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
-#     'Accept-Encoding':'gzip, deflate, sdch, br',
-#     'Accept-Language':'zh-CN,zh;q=0.8',
-#     'Connection':'keep-alive',
-#     'Referer':'http://lagou.com/',
-# }
+DEFAULT_REQUEST_HEADERS = {
+    'Accept-Encoding':'gzip, deflate, sdch, br',
+    'Accept-Language':'zh-CN,zh;q=0.8',
+    'Connection':'keep-alive',
+}
 
 
 # Enable or disable spider middlewares
@@ -64,11 +63,10 @@ DOWNLOADER_MIDDLEWARES = {
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
 
-    'scrapy.downloadermiddlewares.cookies.CookiesMiddleware':None,
-	'LagouSpider.middlewares.BrowserCookiesDownloaderMiddleware':910
+    'LagouSpider.middlewares.BrowserCookiesDownloaderMiddleware': 910,
+    'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': None,
 
-    # 'scrapy.contrib.downloadermiddleware.httpproxy.HttpProxyMiddleware': None,
-    # 'LagouSpider.middlewares.MyRetryMiddleware': 1
+
 }
 # Enable or disable extensions
 # See https://doc.scrapy.org/en/latest/topics/extensions.html
