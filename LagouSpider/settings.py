@@ -111,6 +111,6 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 SPLASH_COOKIES_DEBUG = True
 
-# LOG_LEVEL = 'WARNING'
+LOG_LEVEL = 'WARNING'
 FEED_EXPORT_ENCODING = 'utf-8'
 
