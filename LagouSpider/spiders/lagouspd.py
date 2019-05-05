@@ -19,8 +19,6 @@ class LagouspdSpider(scrapy.Spider):
     allowed_domains = ['lagou.com']
     start_urls = ['http://lagou.com/']
 
-    baseurl = "https://www.lagou.com/zhaopin/"
-
     def start_requests(self):
         yield scrapy.Request(url=self.start_urls[0], callback=self.start_parse_job, meta={'cookiejar':'chrome'})
 
